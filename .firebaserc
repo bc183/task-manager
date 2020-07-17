@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "task-manager-d3bba": {
+      "hosting": {
+        "frontend": [
+          "task-manager-d3bba"
+        ]
+      }
+    }
+  }
+}

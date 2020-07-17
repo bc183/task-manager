@@ -13,10 +13,23 @@ export class TaskService {
     return this.service.post('lists',{title});
   }
 
+  updateList(id : string,title : string){
+    return this.service.patch(`lists/${id}`,{title});
+  }
+  updateTask(taskId: string,listId : string,title : string){
+    return this.service.patch(`lists/${listId}/tasks/${taskId}`,{title});
+  }
   createTask(title : string, listId: string){
-    return this.service.post(`lists/${listId}/tasks`,{title});
+    return this.service.post(`lists/${listId}/tasks`,{title,completed: true});
   }
 
+  deleteLists(id : string){
+    return this.service.delete(`lists/${id}`);
+  }
+
+  deleteTasks(listId : string,taskId: string){
+    return this.service.delete(`lists/${listId}/tasks/${taskId}`);
+  }
 
   getLists(){
     return this.service.get('lists');

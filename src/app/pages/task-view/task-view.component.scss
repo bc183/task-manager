@@ -23,6 +23,14 @@
     flex-direction: column;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    .top-bar {
+        display: flex;
+        margin-bottom: 20px;
+        .title {
+            flex-grow: 1;
+            margin: 0;
+        }
+    }
 }
 
 .list-menu {
@@ -62,10 +70,13 @@
 }
 
 .task {
+    position: relative;
+    display: flex;
     background: white;
     padding: 15px 10px;
     border-radius: 5px;
     margin-top: 5px;
+    align-content: center;
     cursor: pointer;
     &:not(.complete) {
         &:active {
@@ -75,12 +86,33 @@
         transform 0.4s ease;
         &:hover {
             box-shadow: 0 0 0 5px #eeeeee;
+            .task-buttons {
+                opacity: 100;
+                transform: scale(1);
+            }
         }
     }
     &.complete {
         text-decoration: line-through;
         opacity: 80%;
     }
+    .task-text {
+        flex-grow: 1;
+    }
+    .task-buttons {
+        position: absolute;
+        right: 0;
+        margin-right: 10px;
+        transition: opacity 0.2s, transform 0.2s;
+        transform: scale(0.85);
+        opacity: 0;
+    }
+}
+
+.logout {
+    border-radius: 50%;
+    width: 50px;
+    margin-right: 5px;
 }
 
 .circle-add-button {
@@ -96,4 +128,40 @@
     margin: 100px;
     font-size: 20px;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .centered-content {
+        width: 300px;
+        height: 750px;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+    }
+    .task-manager-container {
+        width: 150px;
+        height: 700px;
+    }
+    .sidebar {
+        width: 150px;
+    }
+    .title {
+        font-size: 80%;
+    }
+    .task-list-container {
+        width: 200px;
+    }
+    .task-buttons {
+        width: 20px;
+    }
+}
+
+@media (min-width: 769) and (max-width: 991) {
+    .centered-content {
+        width: fit-content;
+        margin: 150px;
+    }
+    .task-manager-container {
+        width: fit-content;
+    }
 }

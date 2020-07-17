@@ -72,8 +72,8 @@ export class AuthService {
 
   private removeSession(){
     localStorage.removeItem('user-Id');
-    localStorage.removeItem('access-token');
-    localStorage.removeItem('refresh-token');
+    localStorage.removeItem('x-access-token');
+    localStorage.removeItem('x-refresh-token');
   }
 
 }

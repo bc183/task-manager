@@ -17,7 +17,6 @@ export class NewListComponent implements OnInit {
 
   createList(title : string){
     this.service.createList(title).subscribe((list:List)=>{
-      console.log(list);
       this.router.navigate(['/lists',list._id]);  
     });
   }
