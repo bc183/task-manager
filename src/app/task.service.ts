@@ -27,7 +27,7 @@ export class TaskService {
   }
 
   complete(task : Task){
-    return this.service.patch(`lists/${task.listId}/tasks/${task._id}`,{
+    return this.service.patch(`lists/${task._listId}/tasks/${task._id}`,{
       completed: !task.completed
     });
   }

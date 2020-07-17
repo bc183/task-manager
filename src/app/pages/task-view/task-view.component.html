@@ -14,16 +14,21 @@
             <button class="button is-primary has-text-white" routerLink="/new-list">+ New List</button>
         </div>
         <div class="task-list-container has-background-light">
-            <h1 class="title has-text-primary">
-                Tasks
-            </h1>
 
-            <div class="task-container">
+            <div class="task-container" *ngIf="tasks">
+                <h1 class="title has-text-primary">
+                    Tasks
+                </h1>
                 <div *ngFor="let task of tasks" class="task" (click)="onTaskClick(task)" [ngClass]="{'complete' : task.completed}">
                     <p>{{task.title}}</p>
                 </div>
             </div>
 
+            <h1 class="empty-state-text has-text-primary" *ngIf="tasks && tasks.length===0">Oops! there are no task</h1>
+
+            <div *ngIf="tasks===undefined">
+                <h1 class="empty-state-text has-text-primary">Please select a list!</h1>
+            </div>
             <button class="circle-add-button button is-primary" routerLink="./new-task"> 
                 <span class="icon">
                     <i class="fa fa-plus"></i>
